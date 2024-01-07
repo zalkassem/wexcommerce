@@ -1,0 +1,17 @@
+[Unit]
+Description=wexCommerce API
+Wants=mongod.service
+After=mongod.service
+
+[Service]
+ExecStart=/usr/bin/node -r dotenv/config app.js
+WorkingDirectory=/opt/wexcommerce/api
+Type=simple
+Restart=always
+StandardOutput=append:/var/log/wexcommerce.log
+StandardError=append:/var/log/wexcommerce.log
+User=zeiad
+Group=zeiad
+
+[Install]
+WantedBy=multi-user.target
